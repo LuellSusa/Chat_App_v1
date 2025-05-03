@@ -10,30 +10,10 @@ class ChatApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "CHAT APP",
       theme: ThemeData(
         primarySwatch: Colors.yellow,
       ),
-      home: LoginPage(),
-    );
-  }
-}
-
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      drawer: Drawer(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print("Button Pressed");
-        },
-        child: const Icon(Icons.add),
-      ),
-      body: Text('Hello World!'),
+      home: ChatApp(),
     );
   }
 }
