@@ -1,3 +1,5 @@
+import 'package:chat_app/widgets/chat_bubble.dart';
+import 'package:chat_app/widgets/chat_input.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {
@@ -24,112 +26,30 @@ class ChatPage extends StatelessWidget {
           Expanded(
             child: ListView(
               children: [
-                Align(
+                ChatBubble(
+                  message: 'Hello, how are you?',
                   alignment: Alignment.centerLeft,
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text('Kumusta ang buhay2?',
-                            style: TextStyle(fontSize: 20)),
-                        Image.network(
-                          'https://em-content.zobj.net/thumbs/240/apple/354/dizzy-face_1f635.png',
-                          height: 80,
-                          width: 80,
-                        ),
-                      ],
-                    ),
-                    margin: EdgeInsets.all(50),
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(12),
-                        topRight: Radius.circular(12),
-                        bottomRight: Radius.circular(12),
-                      ),
-                    ),
-                  ),
                 ),
-                Align(
+                ChatBubble(
+                  message: 'Life is complicated',
                   alignment: Alignment.centerRight,
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text('Ako pa ba? :(', style: TextStyle(fontSize: 20)),
-                        Image.network(
-                          'https://cdn-icons-png.flaticon.com/512/742/742774.png',
-                          height: 80,
-                          width: 80,
-                        ),
-                      ],
-                    ),
-                    margin: EdgeInsets.all(50),
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(12),
-                        topRight: Radius.circular(12),
-                        bottomLeft: Radius.circular(12),
-                      ),
-                    ),
-                  ),
                 ),
-                Align(
+                ChatBubble(
+                  message: 'i hope you are doing well...',
                   alignment: Alignment.centerLeft,
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text('Kapoy naku T_T', style: TextStyle(fontSize: 20)),
-                        Image.network(
-                          'https://em-content.zobj.net/thumbs/240/apple/354/dizzy-face_1f635.png',
-                          height: 80,
-                          width: 80,
-                        ),
-                      ],
-                    ),
-                    margin: EdgeInsets.all(50),
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(12),
-                        topRight: Radius.circular(12),
-                        bottomRight: Radius.circular(12),
-                      ),
-                    ),
-                  ),
+                ),
+                ChatBubble(
+                  message: 'You can do it',
+                  alignment: Alignment.centerLeft,
+                ),
+                ChatBubble(
+                  message: 'i hope you will',
+                  alignment: Alignment.centerLeft,
                 ),
               ],
             ),
           ),
-          Container(
-            height: 80,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.add,
-                      color: Colors.white,
-                    )),
-                IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.send,
-                      color: Colors.white,
-                    ))
-              ],
-            ),
-            decoration: BoxDecoration(
-              color: Colors.black,
-              borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
-            ),
-          ),
+          ChatInput(),
         ],
       ),
     );
