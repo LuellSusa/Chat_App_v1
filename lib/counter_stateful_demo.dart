@@ -15,9 +15,7 @@ class CounterStateful extends StatefulWidget {
 class _CounterStatefulState extends State<CounterStateful> {
   int counter = 0;
   void increment() {
-    setState(() {
-      counter++;
-    });
+    setState(() {});
 
     print(counter);
   }
