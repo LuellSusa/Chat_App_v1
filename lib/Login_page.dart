@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MaterialApp(home: LoginPage()));
-}
-
-void LoginUser() {
-  print(userNameControler.text);
-  print(passwordControler.text);
-  print("Login Successful");
-}
-
-final userNameControler = TextEditingController();
-final passwordControler = TextEditingController();
-
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  LoginPage({super.key});
+  final _formKey = GlobalKey<FormState>();
+
+  void loginUser() {
+    if (_formKey.currentState != null && _formKey.currentState!.validate()) {
+      print('login successful');
+    } else {
+      print('not successful');
+    }
+  }
+
+  final userNameControler = TextEditingController();
+  final passwordControler = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -65,41 +64,57 @@ class LoginPage extends StatelessWidget {
               ),
 
               //USER NAME
-              SizedBox(height: 20),
-              SizedBox(
-                width: 300,
-                child: TextField(
-                  controller: userNameControler,
-                  decoration: InputDecoration(
-                    labelText: 'Email',
-                    hintText: 'Enter your email',
-                    hintStyle: TextStyle(color: Colors.blueGrey),
-                    border: OutlineInputBorder(),
-                  ),
+              Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    SizedBox(height: 20),
+                    SizedBox(
+                      width: 300,
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value != null &&
+                              value.isNotEmpty &&
+                              value.length < 5) {
+                            return "Your username should be more than 5 characters";
+                          } else if (value != null && value.isEmpty) {
+                            return "Please type your username";
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                          hintText: 'Add your username',
+                          hintStyle: TextStyle(color: Colors.blueGrey),
+                          border: OutlineInputBorder(), // InputDecoration
+                        ),
+                      ), // TextFormField
+                    ),
+
+                    //PASSWORD
+                    SizedBox(height: 10),
+                    SizedBox(
+                      width: 300,
+                      child: TextFormField(
+                        controller: passwordControler,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          labelText: 'Password',
+                          hintText: 'Enter your password',
+                          hintStyle: TextStyle(color: Colors.blueGrey),
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
 
-              //PASSWORD
-              SizedBox(height: 10),
-              SizedBox(
-                width: 300,
-                child: TextField(
-                  controller: passwordControler,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    hintText: 'Enter your password',
-                    hintStyle: TextStyle(color: Colors.blueGrey),
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-              ),
               SizedBox(height: 20),
               SizedBox(
                 width: 300,
                 child: ElevatedButton(
                   onPressed: () {
-                    LoginUser();
+                    loginUser();
                     print("Clicked!");
                   },
                   child: Text(
