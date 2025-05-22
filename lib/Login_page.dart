@@ -4,6 +4,10 @@ void main() {
   runApp(MaterialApp(home: LoginPage()));
 }
 
+void LoginUser() {
+  print("Login Successful");
+}
+
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
@@ -21,6 +25,7 @@ class LoginPage extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
               'Lets sign you in!',
@@ -48,6 +53,22 @@ class LoginPage extends StatelessWidget {
               height: 100,
               width: 100,
             ),
+            ElevatedButton(
+                onPressed: () {
+                  LoginUser();
+                  print("Clicked!");
+                },
+                child: Text(
+                  'Login',
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
+                )),
+            OutlinedButton(onPressed: () {}, child: FlutterLogo()),
+            TextButton(
+                onPressed: () {
+                  print("URL clicked!");
+                },
+                child: Text('https://facebook.com',
+                    style: TextStyle(color: Colors.blue))),
           ],
         ),
       ),

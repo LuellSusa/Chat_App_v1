@@ -15,9 +15,23 @@ class CounterStateful extends StatefulWidget {
 class _CounterStatefulState extends State<CounterStateful> {
   int counter = 0;
   void increment() {
-    setState(() {});
+    if (mounted) {
+      setState(() {
+        counter++;
+      });
+    }
 
     print(counter);
+  }
+
+  void initState() {
+    super.initState();
+    print("initState");
+  }
+
+  void dispose() {
+    super.dispose();
+    print("dispose");
   }
 
   @override
