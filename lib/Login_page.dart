@@ -63,12 +63,24 @@ class LoginPage extends StatelessWidget {
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
                 )),
             OutlinedButton(onPressed: () {}, child: FlutterLogo()),
-            TextButton(
-                onPressed: () {
-                  print("URL clicked!");
-                },
-                child: Text('https://facebook.com',
-                    style: TextStyle(color: Colors.blue))),
+            InkWell(
+              splashColor: Colors.red,
+              onTap: () {
+                print("One Tapped");
+              },
+              onDoubleTap: () {
+                print("Double Tapped");
+              },
+              onLongPress: () {
+                print("Long Pressed");
+              },
+              child: Column(
+                children: [
+                  Text('find us on'),
+                  Text('https://facebook.com'),
+                ],
+              ),
+            ),
           ],
         ),
       ),
