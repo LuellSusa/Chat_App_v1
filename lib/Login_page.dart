@@ -8,15 +8,19 @@ class LoginPage extends StatelessWidget {
   void loginUser(context) {
     if (_formKey.currentState != null && _formKey.currentState!.validate()) {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => ChatPage()));
+          context,
+          MaterialPageRoute(
+              builder: (context) => ChatPage(
+                    username: userNameController.text,
+                  )));
       print('login successful');
     } else {
       print('not successful');
     }
   }
 
-  final userNameControler = TextEditingController();
-  final passwordControler = TextEditingController();
+  final userNameController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +89,7 @@ class LoginPage extends StatelessWidget {
                           }
                           return null;
                         },
+                        controller: userNameController,
                         decoration: InputDecoration(
                           hintText: 'Add your username',
                           hintStyle: TextStyle(color: Colors.blueGrey),
@@ -98,7 +103,7 @@ class LoginPage extends StatelessWidget {
                     SizedBox(
                       width: 300,
                       child: TextFormField(
-                        controller: passwordControler,
+                        controller: passwordController,
                         obscureText: true,
                         decoration: InputDecoration(
                           labelText: 'Password',
