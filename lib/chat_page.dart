@@ -15,7 +15,8 @@ class ChatPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              print('Icon pressed!');
+              Navigator.pop(context);
+              print('Log out successful!');
             },
             icon: Icon(Icons.logout),
           ),
@@ -34,7 +35,32 @@ class ChatPage extends StatelessWidget {
                 message: "Hello",
               );
             },
-          )),
+          )
+              // child: ListView(
+              //   children: [
+              //     ChatBubble(
+              //       message: 'Hello, how are you?',
+              //       alignment: Alignment.centerLeft,
+              //     ),
+              //     ChatBubble(
+              //       message: 'Life is complicated',
+              //       alignment: Alignment.centerRight,
+              //     ),
+              //     ChatBubble(
+              //       message: 'i hope you are doing well...',
+              //       alignment: Alignment.centerLeft,
+              //     ),
+              //     ChatBubble(
+              //       message: 'You can do it',
+              //       alignment: Alignment.centerLeft,
+              //     ),
+              //     ChatBubble(
+              //       message: 'i hope you will',
+              //       alignment: Alignment.centerLeft,
+              //     ),
+              //   ],
+              // ),
+              ),
           ChatInput(),
         ],
       ),
