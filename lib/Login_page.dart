@@ -26,7 +26,7 @@ class LoginPage extends StatelessWidget {
         onPressed: () {
           print("Button Pressed");
         },
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.message),
       ),
       body: SingleChildScrollView(
         // This makes your content scrollable when space is tight

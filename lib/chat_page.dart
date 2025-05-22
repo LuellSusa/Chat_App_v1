@@ -9,7 +9,7 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.blue,
         elevation: 0,
         title: Text('Goodmorning, StreetPhrmacst'),
         actions: [
@@ -34,32 +34,7 @@ class ChatPage extends StatelessWidget {
                 message: "Hello",
               );
             },
-          )
-              // child: ListView(
-              //   children: [
-              //     ChatBubble(
-              //       message: 'Hello, how are you?',
-              //       alignment: Alignment.centerLeft,
-              //     ),
-              //     ChatBubble(
-              //       message: 'Life is complicated',
-              //       alignment: Alignment.centerRight,
-              //     ),
-              //     ChatBubble(
-              //       message: 'i hope you are doing well...',
-              //       alignment: Alignment.centerLeft,
-              //     ),
-              //     ChatBubble(
-              //       message: 'You can do it',
-              //       alignment: Alignment.centerLeft,
-              //     ),
-              //     ChatBubble(
-              //       message: 'i hope you will',
-              //       alignment: Alignment.centerLeft,
-              //     ),
-              //   ],
-              // ),
-              ),
+          )),
           ChatInput(),
         ],
       ),
