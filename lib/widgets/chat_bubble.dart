@@ -5,11 +5,8 @@ class ChatBubble extends StatelessWidget {
   final ChatMessageEntity entity;
   final Alignment alignment;
 
-  const ChatBubble({
-    Key? key,
-    required this.alignment,
-    required this.entity,
-  }) : super(key: key);
+  const ChatBubble({Key? key, required this.alignment, required this.entity})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +28,10 @@ class ChatBubble extends StatelessWidget {
           children: [
             Text(
               entity.text,
-              style: const TextStyle(fontSize: 15, color: Colors.white),
+              style: const TextStyle(fontSize: 15, color: Colors.black),
             ),
             if (entity.imageUrl != null)
-              Image.network(
-                entity.imageUrl!,
-                height: 180,
-              ),
+              Image.network(entity.imageUrl!, height: 180),
           ],
         ),
       ),
