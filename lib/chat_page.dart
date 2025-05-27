@@ -35,6 +35,11 @@ class _ChatPageState extends State<ChatPage> {
     });
   }
 
+  onMessageSent(ChatMessageEntity entity) {
+    _messages.add(entity);
+    setState(() {});
+  }
+
   @override
   void initState() {
     _loadInitialMessages();
@@ -47,7 +52,7 @@ class _ChatPageState extends State<ChatPage> {
     final username = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text('Hi $username!'),
         actions: [
@@ -73,7 +78,9 @@ class _ChatPageState extends State<ChatPage> {
                                 : Alignment.centerLeft,
                         entity: _messages[index]);
                   })),
-          ChatInput(),
+          ChatInput(
+            onSubmit: onMessageSent,
+          ),
         ],
       ),
     );
