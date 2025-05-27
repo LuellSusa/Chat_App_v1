@@ -1,3 +1,5 @@
+import 'package:chat_app/utils/textfield_styles.dart';
+import 'package:chat_app/widgets/login_text_field.dart';
 import 'package:flutter/material.dart';
 import 'chat_page.dart';
 
@@ -74,7 +76,8 @@ class LoginPage extends StatelessWidget {
                     SizedBox(height: 20),
                     SizedBox(
                       width: 300,
-                      child: TextFormField(
+                      child: LoginTextField(
+                        hintText: 'Add your username',
                         validator: (value) {
                           if (value != null &&
                               value.isNotEmpty &&
@@ -86,11 +89,6 @@ class LoginPage extends StatelessWidget {
                           return null;
                         },
                         controller: userNameController,
-                        decoration: InputDecoration(
-                          hintText: 'Add your username',
-                          hintStyle: TextStyle(color: Colors.blueGrey),
-                          border: OutlineInputBorder(), // InputDecoration
-                        ),
                       ), // TextFormField
                     ),
 
@@ -98,15 +96,10 @@ class LoginPage extends StatelessWidget {
                     SizedBox(height: 10),
                     SizedBox(
                       width: 300,
-                      child: TextFormField(
+                      child: LoginTextField(
+                        hasAsterisks: true,
                         controller: passwordController,
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          labelText: 'Password',
-                          hintText: 'Enter your password',
-                          hintStyle: TextStyle(color: Colors.blueGrey),
-                          border: OutlineInputBorder(),
-                        ),
+                        hintText: 'Add your password',
                       ),
                     ),
                   ],
@@ -141,7 +134,7 @@ class LoginPage extends StatelessWidget {
                 child: Column(
                   children: [
                     Text('find us on'),
-                    Text('https://facebook.com'),
+                    Text('https://CoopTech.com'),
                   ],
                 ),
               ),
