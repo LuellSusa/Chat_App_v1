@@ -1,5 +1,6 @@
 import 'dart:convert';
-
+import 'package:chat_app/models/image_model.dart';
+import 'package:http/http.dart' as http;
 import 'package:chat_app/widgets/chat_bubble.dart';
 import 'package:chat_app/widgets/chat_input.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +37,7 @@ class _ChatPageState extends State<ChatPage> {
       print('Done!');
     });
 
-    print('Something');
+    //print('Something');
   }
 
   onMessageSent(ChatMessageEntity entity) {
@@ -44,15 +45,33 @@ class _ChatPageState extends State<ChatPage> {
     setState(() {});
   }
 
+  //TODO: Get Network Images from API
+  _getNetworkImages() async {
+    var endpointUrl = Uri.parse('https://picsum.photos/v2/list');
+
+    final response = await http.get(endpointUrl);
+
+    if (response.statusCode == 200) {
+      final List<dynamic> decodeList = jsonDecode(response.body) as List;
+
+      final List<PixelfordImage> _imageList = decodeList.map((listItem) {
+        return PixelfordImage.fromJson(listItem);
+      }).toList();
+      print(_imageList[0].urlFullSize);
+    }
+  }
+
   @override
   void initState() {
     _loadInitialMessages();
+    _getNetworkImages();
     // TODO: implement initState
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    _getNetworkImages();
     final username = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
