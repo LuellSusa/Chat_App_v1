@@ -26,7 +26,7 @@ class LoginTextField extends StatelessWidget {
       },
       controller: controller,
       decoration: InputDecoration(
-        hintText: 'Add your username',
+        hintText: hintText,
         hintStyle: ThemeTextFieldStyle.loginTextFieldStyle,
         border: OutlineInputBorder(), // InputDecoration
       ),

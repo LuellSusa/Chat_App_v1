@@ -78,7 +78,7 @@ class LoginPage extends StatelessWidget {
                     SizedBox(
                       width: 300,
                       child: LoginTextField(
-                        hintText: 'Add your username',
+                        hintText: 'Input your username here',
                         validator: (value) {
                           if (value != null &&
                               value.isNotEmpty &&
@@ -100,7 +100,7 @@ class LoginPage extends StatelessWidget {
                       child: LoginTextField(
                         hasAsterisks: true,
                         controller: passwordController,
-                        hintText: 'Add your password',
+                        hintText: 'Input your password here',
                       ),
                     ),
                   ],

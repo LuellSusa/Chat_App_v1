@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import '../models/chat_message_entity.dart';
 
 class ChatBubble extends StatelessWidget {
-  final String message;
+  final ChatMessageEntity entity;
   final Alignment alignment;
 
   const ChatBubble({
     Key? key,
-    required this.message,
     required this.alignment,
+    required this.entity,
   }) : super(key: key);
 
   @override
@@ -15,28 +16,28 @@ class ChatBubble extends StatelessWidget {
     return Align(
       alignment: alignment,
       child: Container(
-        padding: EdgeInsets.all(16),
-        margin: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-        decoration: BoxDecoration(
-          color: Colors.grey[300],
-          borderRadius: BorderRadius.circular(12),
+        padding: const EdgeInsets.all(24),
+        margin: const EdgeInsets.all(50),
+        decoration: const BoxDecoration(
+          color: Colors.grey,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(12),
+            topRight: Radius.circular(12),
+            bottomLeft: Radius.circular(12),
+          ),
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              message, // <- Here’s where we use the passed-in text
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.black, // Ensure visible on light background
+              entity.text,
+              style: const TextStyle(fontSize: 15, color: Colors.white),
+            ),
+            if (entity.imageUrl != null)
+              Image.network(
+                entity.imageUrl!,
+                height: 180,
               ),
-            ),
-            SizedBox(height: 10),
-            Image.network(
-              'https://em-content.zobj.net/thumbs/240/apple/354/dizzy-face_1f635.png',
-              height: 80,
-              width: 80,
-            ),
           ],
         ),
       ),
