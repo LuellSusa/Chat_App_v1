@@ -1,3 +1,4 @@
+import 'package:chat_app/utils/spaces.dart';
 import 'package:chat_app/utils/textfield_styles.dart';
 import 'package:chat_app/widgets/login_text_field.dart';
 import 'package:flutter/material.dart';
@@ -23,8 +24,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset:
-          true, // This ensures the body resizes when the keyboard appears
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(),
       drawer: Drawer(),
       floatingActionButton: FloatingActionButton(
@@ -34,9 +34,7 @@ class LoginPage extends StatelessWidget {
         child: const Icon(Icons.message),
       ),
       body: SingleChildScrollView(
-        // This makes your content scrollable when space is tight
-        padding:
-            EdgeInsets.all(16), // Optional: adds padding around the content
+        padding: EdgeInsets.all(16),
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -68,7 +66,7 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
 
-              //USER NAME
+              // USERNAME
               Form(
                 key: _formKey,
                 child: Column(
@@ -89,10 +87,10 @@ class LoginPage extends StatelessWidget {
                           return null;
                         },
                         controller: userNameController,
-                      ), // TextFormField
+                      ),
                     ),
 
-                    //PASSWORD
+                    // PASSWORD
                     SizedBox(height: 10),
                     SizedBox(
                       width: 300,
