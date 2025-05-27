@@ -4,6 +4,6 @@ import 'dart:ui';
 
 class ThemeTextFieldStyle {
   static TextStyle loginTextFieldStyle = GoogleFonts.poppins(
-    textStyle: TextStyle(color: Colors.blueGrey),
+    textStyle: TextStyle(color: Colors.black),
   );
 }
