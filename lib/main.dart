@@ -1,27 +1,23 @@
-import 'package:chat_app/Login_page.dart';
 import 'package:chat_app/chat_page.dart';
-import 'package:chat_app/utils/brand_color.dart';
-import 'package:chat_app/counter_stateful_demo.dart';
-import 'package:chat_app/utils/brand_color.dart';
+import 'package:chat_app/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const ChatApp());
+  runApp(ChatApp());
 }
 
 class ChatApp extends StatelessWidget {
-  const ChatApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: "Chat App",
       theme: ThemeData(
-        primaryColor: BrandColor.primaryColor,
-      ),
+          canvasColor: Colors.transparent,
+          primarySwatch: Colors.deepPurple,
+          appBarTheme: AppBarTheme(
+              backgroundColor: Colors.blue, foregroundColor: Colors.black)),
       home: LoginPage(),
-      routes: {
-        '/chat': (context) => ChatPage(),
-      },
+      routes: {'/chat': (context) => ChatPage()},
     );
   }
 }

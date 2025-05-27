@@ -1,84 +1,84 @@
+//import 'package:chat_app/chat_page.dart';
 import 'package:chat_app/utils/spaces.dart';
-import 'package:chat_app/utils/textfield_styles.dart';
+//import 'package:chat_app/utils/textfield_styles.dart';
 import 'package:chat_app/widgets/login_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:social_media_buttons/social_media_button.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'chat_page.dart';
 
 class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
-  final _formKey = GlobalKey<FormState>();
+  LoginPage({Key? key}) : super(key: key);
 
+  final _formkey = GlobalKey<FormState>();
+
+  //TODO: Validate email and username values
   void loginUser(context) {
-    if (_formKey.currentState != null && _formKey.currentState!.validate()) {
+    if (_formkey.currentState != null && _formkey.currentState!.validate()) {
+      print(userNameController.text);
+      print(passwordController.text);
+
+      //TODO: Navigate to ChatPage on successful login
       Navigator.pushReplacementNamed(context, '/chat',
-          arguments: userNameController.text);
-      print('login successful');
+          arguments: '${userNameController.text}');
+
+      print('login successful!');
     } else {
-      print('not successful');
+      print('not successful!');
     }
   }
 
   final userNameController = TextEditingController();
   final passwordController = TextEditingController();
-  final _mainUrl = "https://youtube.com";
+  final _mainUrl = 'https://poojabhaumik.com';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: true,
-      appBar: AppBar(),
-      drawer: Drawer(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print("Button Pressed");
-        },
-        child: const Icon(Icons.message),
-      ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Image.network(
-                'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
-                height: 100,
-                width: 100,
-              ),
-              SizedBox(height: 20),
-              Text(
-                'Lets sign you in!',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.brown,
-                  letterSpacing: 0.5,
+      backgroundColor: Colors.white,
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  'Let\'s sign you in!',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 0.5),
                 ),
-              ),
-              SizedBox(height: 10),
-              Text(
-                'Welcome back!\nYou\'ve been missed',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  color: Colors.blue,
+                Text(
+                  'Welcome back! \n You\'ve been missed!',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
+                      color: Colors.blueGrey),
                 ),
-              ),
+                verticalSpacing(24),
+                Container(
+                  height: 200,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          fit: BoxFit.fitWidth,
+                          image: AssetImage('assets/illustration.png')),
+                      borderRadius: BorderRadius.circular(56)),
+                ),
+                verticalSpacing(24),
+                //TODO: Add Username & Password text fields
 
-              // USERNAME
-              Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    SizedBox(height: 20),
-                    SizedBox(
-                      width: 300,
-                      child: LoginTextField(
-                        hintText: 'Input your username here',
+                Form(
+                  key: _formkey,
+                  child: Column(
+                    children: [
+                      LoginTextField(
+                        hintText: "Enter your username",
                         validator: (value) {
                           if (value != null &&
                               value.isNotEmpty &&
@@ -91,69 +91,57 @@ class LoginPage extends StatelessWidget {
                         },
                         controller: userNameController,
                       ),
-                    ),
-
-                    // PASSWORD
-                    SizedBox(height: 10),
-                    SizedBox(
-                      width: 300,
-                      child: LoginTextField(
+                      verticalSpacing(24),
+                      LoginTextField(
                         hasAsterisks: true,
                         controller: passwordController,
-                        hintText: 'Input your password here',
+                        hintText: 'Enter your password',
                       ),
-                    ),
-                  ],
-                ),
-              ),
-
-              SizedBox(height: 20),
-              SizedBox(
-                width: 300,
-                child: ElevatedButton(
-                  onPressed: () {
-                    loginUser(context);
-                  },
-                  child: Text(
-                    'Login',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                    ],
                   ),
                 ),
-              ),
-              SizedBox(height: 20),
-              InkWell(
-                splashColor: Colors.red,
-                onTap: () async {
-                  if (!await launch(_mainUrl)) {
-                    throw 'Could not Launch this!';
-                  }
-                  print("One Tapped");
-                },
-                onDoubleTap: () {
-                  print("Double Tapped");
-                },
-                onLongPress: () {
-                  print("Long Pressed");
-                },
-                child: Column(
-                  children: [
-                    Text('find us on'),
-                    Text(_mainUrl),
-                  ],
+                verticalSpacing(24),
+                ElevatedButton(
+                    onPressed: () {
+                      loginUser(context);
+                    },
+                    child: Text(
+                      'Login',
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.w300),
+                    )),
+                GestureDetector(
+                  onTap: () async {
+                    //todo: Navigate to browser
+                    print('Link clicked!');
+                    if (!await launch(_mainUrl)) {
+                      throw 'Could not launch this';
+                    }
+                  },
+                  child: Column(
+                    children: [
+                      Text('Find us on'),
+                      Text(_mainUrl),
+                    ],
+                  ),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SocialMediaButton.youtube(
-                      size: 20, color: Colors.red, url: "https://youtube.com"),
-                  SocialMediaButton.facebook(
+                //TODO: Add Social media buttons here
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SocialMediaButton.facebook(
                       size: 20,
                       color: Colors.blue,
-                      url: "https://facebook.com"),
-                ],
-              )
-            ],
+                      url: "https://www.facebook.com/share/1BPmT72qMA/",
+                    ),
+                    SocialMediaButton.linkedin(
+                      url:
+                          "https://www.linkedin.com/in/alvic-caranzo-b724a4170/",
+                    )
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
