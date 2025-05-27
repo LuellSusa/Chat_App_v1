@@ -2,6 +2,7 @@ import 'package:chat_app/utils/spaces.dart';
 import 'package:chat_app/utils/textfield_styles.dart';
 import 'package:chat_app/widgets/login_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'chat_page.dart';
 
 class LoginPage extends StatelessWidget {
@@ -20,6 +21,7 @@ class LoginPage extends StatelessWidget {
 
   final userNameController = TextEditingController();
   final passwordController = TextEditingController();
+  final _mainUrl = "https://youtube.com";
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +122,10 @@ class LoginPage extends StatelessWidget {
               SizedBox(height: 20),
               InkWell(
                 splashColor: Colors.red,
-                onTap: () {
+                onTap: () async {
+                  if (!await launch(_mainUrl)) {
+                    throw 'Could not Launch this!';
+                  }
                   print("One Tapped");
                 },
                 onDoubleTap: () {
@@ -132,7 +137,7 @@ class LoginPage extends StatelessWidget {
                 child: Column(
                   children: [
                     Text('find us on'),
-                    Text('https://CoopTech.com'),
+                    Text(_mainUrl),
                   ],
                 ),
               ),
