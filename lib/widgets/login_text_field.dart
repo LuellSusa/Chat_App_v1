@@ -1,5 +1,5 @@
-import 'package:chat_app/utils/textfield_styles.dart';
 import 'package:flutter/material.dart';
+import '../utils/textfield_styles.dart';
 
 class LoginTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -20,16 +20,13 @@ class LoginTextField extends StatelessWidget {
     return TextFormField(
       obscureText: hasAsterisks,
       validator: (value) {
-        if (validator != null) {
-          return validator!(value);
-        }
+        if (validator != null) return validator!(value);
       },
       controller: controller,
       decoration: InputDecoration(
-        hintText: hintText,
-        hintStyle: ThemeTextFieldStyle.loginTextFieldStyle,
-        border: OutlineInputBorder(), // InputDecoration
-      ),
-    ); // TextFormF;
+          hintText: '$hintText',
+          hintStyle: ThemeTextStyle.loginTextFieldStyle,
+          border: OutlineInputBorder()),
+    );
   }
 }

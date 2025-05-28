@@ -71,6 +71,7 @@ class _ChatPageState extends State<ChatPage> {
           IconButton(
               onPressed: () {
                 //TODO: Navigate back to LoginPage on logout
+                context.read<AuthService>().logoutUser();
                 Navigator.pushReplacementNamed(context, '/');
                 print('Icon press');
               },
