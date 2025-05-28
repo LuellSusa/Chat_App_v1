@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-
-import '../models/image_model.dart';
+import 'package:chat_app/models/image_model.dart';
 import 'package:http/http.dart' as http;
 
 class ImageRepository {

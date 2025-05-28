@@ -1,20 +1,20 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'image_model.dart';
+part of 'image_models.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-PixelfordImage _$PixelformImageFromJson(Map<String, dynamic> json) =>
+PixelfordImage _$PixelfordImageFromJson(Map<String, dynamic> json) =>
     PixelfordImage(
+      id: json['id'] as String,
       author: json['author'] as String,
       url: json['url'] as String,
-      id: json['id'] as String,
       urlFullSize: json['download_url'] as String,
     );
 
-Map<String, dynamic> _$PixelformImageToJson(PixelfordImage instance) =>
+Map<String, dynamic> _$PixelfordImageToJson(PixelfordImage instance) =>
     <String, dynamic>{
       'id': instance.id,
       'author': instance.author,
